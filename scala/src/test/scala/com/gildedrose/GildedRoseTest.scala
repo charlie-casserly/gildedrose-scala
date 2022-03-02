@@ -25,14 +25,14 @@ class GildedRoseTest  extends AnyFunSpec with Matchers {
     app.items(0).sellIn should equal (70)
   }
 
-  it ("items age decreases over time") {
+  it ("Normal items age decreases over time") {
     val items = Array[Item](new Item("Normal", 10, 10))
     val app = new GildedRose(items)
     app.updateQuality()
     app.items(0).sellIn should equal (9)
   }
 
-  it ("items past their sell by date degrade twice as fast") {
+  it ("Normal items past their sell by date degrade twice as fast") {
     val items = Array[Item](new Item("Normal", 0, 10))
     val app = new GildedRose(items)
     app.updateQuality()
@@ -60,28 +60,28 @@ class GildedRoseTest  extends AnyFunSpec with Matchers {
     app.items(0).quality should equal (41)
   }
 
-  it("Backstage passes increase in quality as it ages")  {
+  it("Backstage pass increase in quality as it ages")  {
     val items = Array[Item](new Item("Backstage passes to a TAFKAL80ETC concert", 40, 40))
     val app = new GildedRose(items)
     app.updateQuality()
     app.items(0).quality should equal (41)
   }
 
-  it("Backstage passes increase by 2 quality when there are 10 days or less to sell") {
+  it("Backstage pass increase by 2 quality when there are 10 days or less to sell") {
     val items = Array[Item](new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10))
     val app = new GildedRose(items)
     app.updateQuality()
     app.items(0).quality should equal (12)
   }
 
-  it("Backstage passes increase by 3 quality when there are 5 days or less to sell") {
+  it("Backstage pass increase by 3 quality when there are 5 days or less to sell") {
     val items = Array[Item](new Item("Backstage passes to a TAFKAL80ETC concert", 5, 5))
     val app = new GildedRose(items)
     app.updateQuality()
     app.items(0).quality should equal (8)
   }
 
-  it("Backstage passes quality reduces to zero once sellby date arrives") {
+  it("Backstage pass quality reduces to zero once sellby date arrives") {
     val items = Array[Item](new Item("Backstage passes to a TAFKAL80ETC concert", 0, 40))
     val app = new GildedRose(items)
     app.updateQuality()
